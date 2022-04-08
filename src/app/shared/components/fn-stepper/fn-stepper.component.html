@@ -1,11 +1,13 @@
 <mat-horizontal-stepper
     labelPosition="bottom"
     class="fn-horizontal-stepper"
+    [linear]="false"
+    #stepper
     >
     <ng-template matStepperIcon="edit" let-index="index">
         <span class="step-inner"><mat-icon>check</mat-icon></span>
     </ng-template>
-        <mat-step class="section-container" label="Details">
+        <mat-step  label="Details">
             <div class="recharge-options-group">
                 <div class="recharge-options">
                     <input type="radio" class="input-radio" id="mobile" name="recharge" value="mobile" checked/>
@@ -55,7 +57,7 @@
                             <div class="col-md-3">
                                 <fn-button buttonType="button" (onClick)="browsePlanToggle()">Browser Plan</fn-button>
                                 &nbsp;
-                                <fn-button matStepperNext buttonType="button" (onClick)="action('$event')">Proceed</fn-button>
+                                <fn-button  buttonType="button" (onClick)="nextStep()">Proceed</fn-button>
 
                             </div>
                         </div>
@@ -199,10 +201,115 @@
                 </div>
                
             </form>
-           
+           <img src="../../../../assets/fraudulentNoticeRemittance.jpg" alt="" class="img-fluid pt-3">
         </mat-step>
         <mat-step label="Confirmation">
-            <p>Confirmation</p>
+          <ng-container *ngIf="!confirmationOtp; else otpContainer">
+            <div class="confirmation-detail">
+              <div class="row pb-4">
+                <div class="col-md-5">
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="header-text">Customer Mobile</h6>
+                     
+                    </div>
+                    <div class="col-4">
+                     <p class="m-0">9372275520</p>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-md-5">
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="header-text">Service Provider</h6>
+                     
+                    </div>
+                    <div class="col-4">
+                     <p class="m-0">Airtel</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pb-4">
+               <div class="col-md-5">
+                 <div class="row">
+                   <div class="col-8">
+                     <h6 class="header-text">Topup Mobile</h6>
+                    
+                   </div>
+                   <div class="col-4">
+                    <p class="m-0">9372275520</p>
+                   </div>
+                 </div>
+               </div>
+               
+             </div>
+              <div class="row pb-4">
+                <div class="col-md-5">
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="header-text">Amount</h6>
+                     
+                    </div>
+                    <div class="col-4">
+                     <p class="m-0">10</p>
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-md-5">
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="header-text">Charges(Including GST)</h6>
+                     
+                    </div>
+                    <div class="col-4">
+                     <p class="m-0">0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pb-4">
+               <div class="col-md-5">
+                 <div class="row">
+                   <div class="col-8">
+                     <h6 class="header-text">Net Amount</h6>
+                    
+                   </div>
+                   <div class="col-4">
+                    <p class="m-0">10</p>
+                   </div>
+                 </div>
+               </div>
+                <div class="col-md-5">
+                 <div class="row">
+                   <div class="col-8">
+                     <h6 class="header-text">Payment By Cash </h6>
+                    
+                   </div>
+                   <div class="col-4">
+                    <p class="m-0">60</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+            </div>
+          </ng-container>
+          <ng-template #otpContainer>
+            <div class="otp-confirmation">
+              <div class="otp-input-field">
+                <label class="pe-2">Enter OTP:</label>
+                <input type="text" />
+              </div>
+            </div>
+          </ng-template>
+          <div class="d-flex justify-content-end">
+            <div>
+              <fn-button  buttonType="button" (onClick)="!confirmationOtp? prevStep():toggleOtpValue()">Previous</fn-button>
+              &nbsp;
+              <fn-button  buttonType="button" (onClick)="confirmationOtp ?nextStep():toggleOtpValue()">Next</fn-button>
+            </div>
+          </div>
+           
         </mat-step>
         <mat-step label="Summary">
             <p>Summary</p>

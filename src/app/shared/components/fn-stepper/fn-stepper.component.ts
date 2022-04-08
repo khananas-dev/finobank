@@ -1,4 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
+import { MatHorizontalStepper, MatStepper } from "@angular/material/stepper";
+
 
 @Component({
     selector:'fn-stepper',
@@ -20,6 +22,10 @@ export class FNStepperComponent implements OnInit, OnChanges{
     ]
 
     browsePlan:boolean = false;
+    confirmationOtp:boolean = false;
+
+    // view
+    @ViewChild('stepper') stepper: MatHorizontalStepper|any;
     constructor(){
        
         
@@ -39,6 +45,17 @@ export class FNStepperComponent implements OnInit, OnChanges{
 
     browsePlanToggle(){
         this.browsePlan = !this.browsePlan;
+    }
+
+    nextStep(){
+        this.stepper.next();
+    }
+
+    prevStep(){
+        this.stepper.previous();
+    }
+    toggleOtpValue(){
+        this.confirmationOtp = !this.confirmationOtp
     }
 
 }

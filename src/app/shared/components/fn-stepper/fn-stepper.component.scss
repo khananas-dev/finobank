@@ -8,6 +8,7 @@
                     top: 22px;   
                 }
                 .mat-horizontal-stepper-header{
+                    pointer-events: none !important;
                     &::before,&::after{
                         background: #fff;              
                         top: 22px;     
@@ -68,5 +69,20 @@
         }
         .table-description{
            max-width:200px;        }
+    }
+
+    .header-text{
+        margin: 0px;
+        font-size: 14px;
+    }
+    .otp-input-field {
+        input{
+            border: 0px;
+            border-bottom: 1px solid;
+            &:focus-visible{
+                outline: none;
+            }
+        }
+        
     }
 }
