@@ -1,0 +1,72 @@
+:host ::ng-deep{
+    .fn-horizontal-stepper{
+        &.mat-stepper-horizontal{
+            .mat-horizontal-stepper-header-container{
+                background: #6b678c;
+                .mat-stepper-horizontal-line{
+                    background: #fff;              
+                    top: 22px;   
+                }
+                .mat-horizontal-stepper-header{
+                    &::before,&::after{
+                        background: #fff;              
+                        top: 22px;     
+                        }
+
+                }
+                .mat-step-header{
+                  padding: 5px 24px;
+                    .mat-step-icon{
+
+                        width: 35px;
+                        height: 35px;
+                        line-height: 30px;
+                        display: inline-block;
+                        border-radius: 100px;
+                        background: #fff;
+                        border: 2px solid #333;
+                        text-align: center;
+                        font-size: 16px;
+                        font-weight: bold;
+                        box-shadow: 0px 0px 0px 4px #6b678c;
+                        background-color: #b50000 !important;
+                        color: white !important;
+                       
+                    }
+                    .mat-step-label{
+                        font-size: 14px;
+                        color: #fff;
+                        font-weight: 500;
+                        padding-top: 5px;
+                        font-family:'Open Sans', sans-serif;
+                    }
+                }
+            }
+            .mat-horizontal-content-container{
+                padding-top: 50px;
+                border: 1px solid #e6ebed ;
+                .recharge-options-group{
+                    display: flex;
+                    padding-bottom: 50px;
+                    .recharge-options{
+                        display: flex;
+                        align-items: center;
+                        &:not(:last-child){
+                            margin-right: 50px;
+                        }
+                        .input-radio{
+                            width: 20px;
+                            height: 20px;
+                        }
+                        label{
+                            display: inline-block;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+        .table-description{
+           max-width:200px;        }
+    }
+}

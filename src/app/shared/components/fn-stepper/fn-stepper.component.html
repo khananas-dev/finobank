@@ -1,0 +1,210 @@
+<mat-horizontal-stepper
+    labelPosition="bottom"
+    class="fn-horizontal-stepper"
+    >
+    <ng-template matStepperIcon="edit" let-index="index">
+        <span class="step-inner"><mat-icon>check</mat-icon></span>
+    </ng-template>
+        <mat-step class="section-container" label="Details">
+            <div class="recharge-options-group">
+                <div class="recharge-options">
+                    <input type="radio" class="input-radio" id="mobile" name="recharge" value="mobile" checked/>
+                    <label for="mobile">Mobile</label>
+                </div>       
+                <div class="recharge-options">
+                    <input type="radio" class="input-radio" id="dth" name="recharge" value="dth"/>
+                    <label for="dth">DTH</label>
+                </div>
+                <div class="recharge-options">
+                    <input type="radio" class="input-radio" id="data-card" name="recharge" value="data-card"/>
+                    <label for="data-card">Data Card</label>
+                </div>
+            </div>
+            <form class="mobile-recharge-form">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-form-field class="fn-input-text">
+                            <mat-label>Mobile Number</mat-label>
+                            <input type="tel" matInput >
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Select Service Provider</mat-label>
+                            <mat-select >
+                                <mat-option *ngFor="let item of servicePropvider" [value]="item.value" >{{item.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Select circle</mat-label>
+                            <mat-select  >
+                                <mat-option *ngFor="let item of circleList" [value]="item.value" >{{item.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="fn-input-text">
+                                    <mat-label>Amount</mat-label>
+                                    <input type="text" matInput  >
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <fn-button buttonType="button" (onClick)="browsePlanToggle()">Browser Plan</fn-button>
+                                &nbsp;
+                                <fn-button matStepperNext buttonType="button" (onClick)="action('$event')">Proceed</fn-button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="browsePlan">
+                        <div class="col-12 pt-5">
+                            <div class="browse-plan">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                      <a class="nav-link text-dark active" data-bs-toggle="tab" href="#talkTime">Talk Time</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link text-dark" data-bs-toggle="tab" href="#topup">Topup</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link text-dark" data-bs-toggle="tab" href="#mobile-data">3G Mobile Data </a>
+                                    </li>
+                                  </ul>
+                                  
+                                  <!-- Tab panes -->
+                                  <div class="tab-content">
+                                    <div class="tab-pane active" id="talkTime">
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Talk Time</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                    <div class="tab-pane  fade" id="topup">
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Topup</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                    <div class="tab-pane  fade" id="mobile-data">
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">3G Data</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                              <tr>
+                                                <td>NA</td>
+                                                <td>1 Month</td>
+                                                <td class="table-description">All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time</td>
+                                                <td><fn-button buttonType="button" (onClick)="action('$event')">Rs.399</fn-button></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    
+                </div>
+               
+            </form>
+           
+        </mat-step>
+        <mat-step label="Confirmation">
+            <p>Confirmation</p>
+        </mat-step>
+        <mat-step label="Summary">
+            <p>Summary</p>
+        </mat-step>
+    </mat-horizontal-stepper>
