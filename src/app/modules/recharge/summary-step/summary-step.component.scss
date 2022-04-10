@@ -13,11 +13,18 @@
 }
 
 .summary-detail {
+  position: relative;
   h3 {
     font-size: 24px;
     font-weight: 500;
     font-family: "Open Sans";
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center;
+  }
+  .ads-img {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
   }
 }
