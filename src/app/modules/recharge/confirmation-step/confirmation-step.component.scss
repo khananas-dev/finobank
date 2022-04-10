@@ -1,0 +1,40 @@
+.header-text {
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #828080;
+}
+.otp-confirmation {
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.otp-input-field {
+  display: flex;
+  align-items: center;
+  input {
+    border: 0px;
+    border-bottom: 1px solid #828080;
+    text-align: center;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  label {
+    font-size: 18px;
+    color: #828080;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+.resend-link {
+  padding-top: 20px;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  a {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,23 @@
+.readonly-custom {
+  // display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  padding-bottom: 10px;
+  .readonly-custom-label {
+    padding-right: 10px;
+  }
+  .readonly-custom-value {
+    padding-left: 10px;
+  }
+}
+
+.summary-detail {
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+    font-family: "Open Sans";
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}

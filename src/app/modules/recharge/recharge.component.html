@@ -1,13 +1,24 @@
 <div class="container">
-    <div class="recharge-container">
-        <div class="px-4">
-            <a href="javascript:void(0)">Home</a><span class="pipe-divider mx-3">|</span> <a href="javascript:void(0)">Recharge</a>
-        </div>
-        <div class="fn-stepper-wrapper">
-            <fn-stepper></fn-stepper>
-        </div>
-       
-        
+  <div class="recharge-container">
+    <div class="px-4">
+      <a href="javascript:void(0)">Home</a
+      ><span class="pipe-divider mx-3">|</span>
+      <a href="javascript:void(0)">Recharge</a>
     </div>
-   
+    <div class="fn-stepper-wrapper">
+      <fn-stepper
+        #stepper
+        [stepIndex]="currentStepIndex"
+        [config]="stepperConfig"
+      ></fn-stepper>
+
+      <ng-template #detail>
+        <detail-step (onBtnClick)="btnAction($event)"></detail-step>
+      </ng-template>
+      <ng-template #confirmation>
+        <confirmation-step (onBtnClick)="btnAction($event)"></confirmation-step>
+      </ng-template>
+      <ng-template #summary> <summary-step></summary-step> </ng-template>
+    </div>
+  </div>
 </div>

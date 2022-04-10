@@ -1,0 +1,155 @@
+<div class="recharge-options-group">
+  <div class="recharge-options">
+    <input
+      [(ngModel)]="reachargeMode"
+      type="radio"
+      class="input-radio"
+      id="mobile"
+      name="recharge"
+      value="mobile"
+    />
+    <label for="mobile">Mobile</label>
+  </div>
+  <div class="recharge-options">
+    <input
+      [(ngModel)]="reachargeMode"
+      type="radio"
+      class="input-radio"
+      id="dth"
+      name="recharge"
+      value="dth"
+    />
+    <label for="dth">DTH</label>
+  </div>
+  <div class="recharge-options">
+    <input
+      [(ngModel)]="reachargeMode"
+      type="radio"
+      class="input-radio"
+      id="data-card"
+      name="recharge"
+      value="data-card"
+    />
+    <label for="data-card">Data Card</label>
+  </div>
+</div>
+<ng-container *ngIf="reachargeMode == 'mobile'">
+  <form
+    class="mobile-recharge-form"
+    [formGroup]="mobileRechargeForm"
+    (ngSubmit)="rechargeFormSubmit()"
+  >
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field class="fn-input-text">
+          <mat-label>Mobile Number</mat-label>
+          <input type="tel" formControlName="phoneNumber" matInput required />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>Select Service Provider</mat-label>
+          <mat-select formControlName="serviceProvider" required>
+            <mat-option
+              *ngFor="let item of serviceProviderList"
+              [value]="item.value"
+              >{{ item.viewValue }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>Select circle</mat-label>
+          <mat-select formControlName="areaCircle" required>
+            <mat-option *ngFor="let item of circleList" [value]="item.value">{{
+              item.viewValue
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field class="fn-input-text">
+              <mat-label>Amount</mat-label>
+              <input type="text" formControlName="amount" matInput required />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <fn-button buttonType="button" (onClick)="browsePlanToggle()"
+              >Browse Plan</fn-button
+            >
+            &nbsp;
+            <fn-button buttonType="submit" (onClick)="btnAction('next')"
+              >Proceed</fn-button
+            >
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="browsePlan">
+        <div class="col-12 pt-5">
+          <div class="browse-plan">
+            <ul class="nav nav-tabs">
+              <li
+                class="nav-item"
+                *ngFor="let item of browsePlanList; let indexOfelement = index"
+              >
+                <a
+                  class="nav-link text-dark"
+                  [ngClass]="{
+                    active: indexOfelement == 0
+                  }"
+                  data-bs-toggle="tab"
+                  [href]="'#' + item.name"
+                  >{{ item.label }}</a
+                >
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div
+                class="tab-pane"
+                [ngClass]="{
+                  active: indexOfelement == 0
+                }"
+                *ngFor="let item of browsePlanList; let indexOfelement = index"
+                [id]="item.name"
+              >
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">{{ item.label }}</th>
+                      <th scope="col">Validity</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let tableData of item.data">
+                      <td>{{ tableData.amount }}</td>
+                      <td>{{ tableData.validity }}</td>
+                      <td class="table-description">
+                        {{ tableData.description }}
+                      </td>
+                      <td>
+                        <fn-button buttonType="button" (onClick)="btnAction()"
+                          >Rs. {{ tableData.price }}</fn-button
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+  <img
+    src="../../../../assets/fraudulentNoticeRemittance.jpg"
+    alt=""
+    class="img-fluid pt-3"
+  />
+</ng-container>

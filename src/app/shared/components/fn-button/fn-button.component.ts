@@ -1,27 +1,22 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-    selector:'fn-button',
-    templateUrl:'./fn-button.component.html',
-    styleUrls:['./fn-button.component.scss'],
+  selector: 'fn-button',
+  templateUrl: './fn-button.component.html',
+  styleUrls: ['./fn-button.component.scss'],
 })
+export class FNButtonComponent implements OnInit {
+  // Parameters
 
-export class FNButtonComponent implements OnInit{
+  @Input() buttonType: any; // reset, submit, button
+  @Input() disable: boolean | any;
+  @Output() onClick: EventEmitter<any> = new EventEmitter();
+  constructor() {}
 
-    // Parameters
+  ngOnInit() {}
 
-    @Input() buttonType: any; // reset, submit, button
-    @Output() onClick: EventEmitter<any> = new EventEmitter();
-    constructor(){
-
-    }
-
-    ngOnInit(){
-
-    }
-
-    clickBtn(button:any){
-        button.preventDefault();
-        this.onClick.emit(button)
-    }
+  clickBtn(button: any) {
+    button.preventDefault();
+    this.onClick.emit(button);
+  }
 }
