@@ -38,14 +38,14 @@ export class DetailStepComponent implements OnInit {
           validity: '1 month',
           description:
             'All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time',
-          price: '399',
+          price: '499',
         },
         {
           amount: 'NA',
           validity: '1 month',
           description:
             'All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time',
-          price: '399',
+          price: '599',
         },
       ],
     },
@@ -65,14 +65,14 @@ export class DetailStepComponent implements OnInit {
           validity: '1 month',
           description:
             'All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time',
-          price: '399',
+          price: '499',
         },
         {
           amount: 'NA',
           validity: '1 month',
           description:
             'All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time',
-          price: '399',
+          price: '599',
         },
       ],
     },
@@ -91,14 +91,14 @@ export class DetailStepComponent implements OnInit {
           validity: '1 month',
           description:
             'All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time',
-          price: '399',
+          price: '499',
         },
         {
           amount: 'NA',
           validity: '1 month',
           description:
             'All ZEE5 Originals and Exclusives, Blockbuster Movies, All ALT Balaji Shows, Zindagi TV Shows, Kids, Live TV, TV shows before telecast. Watch on 5 devices at a time',
-          price: '399',
+          price: '599',
         },
       ],
     },
@@ -135,8 +135,19 @@ export class DetailStepComponent implements OnInit {
     this.onBtnClick.emit(actionCase);
     // console.log(this.mobileRechargeModel);
   }
+  planPrice(event: any) {
+    console.log(event);
+    this.mobileRechargeForm.patchValue({
+      amount: event,
+    });
+  }
 
   rechargeFormSubmit() {
-    console.log(this.mobileRechargeForm);
+    console.log(this.mobileRechargeModel);
+    const event = {
+      event: 'firstStepSubmit',
+      data: this.mobileRechargeModel,
+    };
+    this.onBtnClick.emit(event);
   }
 }

@@ -34,22 +34,30 @@
   </div>
 </div>
 <ng-container *ngIf="reachargeMode == 'mobile'">
-  <form
-    class="mobile-recharge-form"
-    [formGroup]="mobileRechargeForm"
-    (ngSubmit)="rechargeFormSubmit()"
-  >
+  <form class="mobile-recharge-form" [formGroup]="mobileRechargeForm">
     <div class="row">
       <div class="col-md-3">
         <mat-form-field class="fn-input-text">
           <mat-label>Mobile Number</mat-label>
-          <input type="tel" formControlName="phoneNumber" matInput required />
+          <input
+            type="tel"
+            [(ngModel)]="mobileRechargeModel.phoneNumber"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            matInput
+            required
+          />
         </mat-form-field>
       </div>
       <div class="col-md-3">
         <mat-form-field>
           <mat-label>Select Service Provider</mat-label>
-          <mat-select formControlName="serviceProvider" required>
+          <mat-select
+            formControlName="serviceProvider"
+            [(ngModel)]="mobileRechargeModel.serviceProvider"
+            name="serviceProvider"
+            required
+          >
             <mat-option
               *ngFor="let item of serviceProviderList"
               [value]="item.value"
@@ -61,7 +69,12 @@
       <div class="col-md-3">
         <mat-form-field>
           <mat-label>Select circle</mat-label>
-          <mat-select formControlName="areaCircle" required>
+          <mat-select
+            formControlName="areaCircle"
+            [(ngModel)]="mobileRechargeModel.areaCircle"
+            name="areaCircle"
+            required
+          >
             <mat-option *ngFor="let item of circleList" [value]="item.value">{{
               item.viewValue
             }}</mat-option>
@@ -73,15 +86,28 @@
           <div class="col-md-3">
             <mat-form-field class="fn-input-text">
               <mat-label>Amount</mat-label>
-              <input type="text" formControlName="amount" matInput required />
+              <input
+                type="text"
+                formControlName="amount"
+                [(ngModel)]="mobileRechargeModel.amount"
+                name="amount"
+                matInput
+                required
+              />
             </mat-form-field>
           </div>
           <div class="col-md-3">
-            <fn-button buttonType="button" (onClick)="browsePlanToggle()"
+            <fn-button
+              buttonType="button"
+              [disable]="mobileRechargeModel.serviceProvider ? false : true"
+              (onClick)="browsePlanToggle()"
               >Browse Plan</fn-button
             >
             &nbsp;
-            <fn-button buttonType="submit" (onClick)="btnAction('next')"
+            <fn-button
+              buttonType="submit"
+              [disable]="mobileRechargeForm.invalid"
+              (onClick)="rechargeFormSubmit()"
               >Proceed</fn-button
             >
           </div>
@@ -133,7 +159,9 @@
                         {{ tableData.description }}
                       </td>
                       <td>
-                        <fn-button buttonType="button" (onClick)="btnAction()"
+                        <fn-button
+                          buttonType="button"
+                          (onClick)="planPrice(tableData.price)"
                           >Rs. {{ tableData.price }}</fn-button
                         >
                       </td>

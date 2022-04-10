@@ -16,7 +16,10 @@
         <detail-step (onBtnClick)="btnAction($event)"></detail-step>
       </ng-template>
       <ng-template #confirmation>
-        <confirmation-step (onBtnClick)="btnAction($event)"></confirmation-step>
+        <confirmation-step
+          [rechargeData]="rechargeData"
+          (onBtnClick)="btnAction($event)"
+        ></confirmation-step>
       </ng-template>
       <ng-template #summary> <summary-step></summary-step> </ng-template>
     </div>

@@ -19,6 +19,7 @@ export class RechargeComponent implements OnInit {
 
   // variables
   currentStepIndex: number | any;
+  rechargeData: any;
 
   constructor() {
     // Initialize
@@ -71,13 +72,19 @@ export class RechargeComponent implements OnInit {
   }
 
   btnAction(event: any) {
-    switch (event) {
+    const eventCase = event?.event ? event?.event : event;
+    switch (eventCase) {
       case 'next':
         this.stepper.nextStep();
         break;
 
       case 'prev':
         this.stepper.prevStep();
+        break;
+
+      case 'firstStepSubmit':
+        this.rechargeData = event.data;
+        if (this.rechargeData) this.stepper.nextStep();
         break;
 
       default:
