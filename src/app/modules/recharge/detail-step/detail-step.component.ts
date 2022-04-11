@@ -123,7 +123,9 @@ export class DetailStepComponent implements OnInit {
     amount: new FormControl(''),
   });
 
-  constructor() {}
+  constructor() {
+    this.reachargeMode   = "mobile";
+  }
 
   ngOnInit(): void {}
 
